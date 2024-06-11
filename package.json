@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/backend": "^1.2.2",
+    "@clerk/nextjs": "^5.1.4",
     "@typeweave/react": "^3.0.1",
     "convex": "^1.12.1",
     "lucide-react": "^0.390.0",
     "next": "14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "svix": "^1.24.0"
   },
   "devDependencies": {
     "@radix-ui/colors": "^3.0.0",
