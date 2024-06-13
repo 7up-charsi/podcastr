@@ -1,2 +1,2 @@
 export * from './sidebar-links';
-export * from './voice-details';
+export * from './ai-voice-modals';

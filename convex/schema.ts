@@ -4,25 +4,23 @@ import { v } from 'convex/values';
 export default defineSchema({
   podcasts: defineTable({
     user: v.id('users'),
-    podcastTitle: v.string(),
-    podcastDescription: v.string(),
+    title: v.string(),
+    description: v.string(),
     audioUrl: v.optional(v.string()),
-    imageStorageId: v.optional(v.id('_storage')),
+    voicePrompt: v.string(),
+    voiceType: v.string(),
+    audioDuration: v.number(),
     imageUrl: v.optional(v.string()),
-    audioStorageId: v.optional(v.id('_storage')),
+    imagePrompt: v.string(),
     author: v.string(),
     authorId: v.string(),
     authorImageUrl: v.string(),
-    voicePrompt: v.string(),
-    imagePrompt: v.string(),
-    voiceType: v.string(),
-    audioDuration: v.number(),
     views: v.number(),
   })
     .searchIndex('search_author', { searchField: 'author' })
-    .searchIndex('search_title', { searchField: 'podcastTitle' })
+    .searchIndex('search_title', { searchField: 'title' })
     .searchIndex('search_body', {
-      searchField: 'podcastDescription',
+      searchField: 'description',
     }),
   users: defineTable({
     email: v.string(),

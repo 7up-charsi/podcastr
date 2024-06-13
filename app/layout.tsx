@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/globals.css';
 import { ConvexClerkProvider } from '@/providers/convex-clerk-provider';
+import { Bounce, ToastContainer } from 'react-toastify';
+import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,20 @@ export default function RootLayout({
         className={`${inter.className} bg-background text-foreground`}
       >
         <ConvexClerkProvider>{children}</ConvexClerkProvider>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2999}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
       </body>
     </html>
   );
