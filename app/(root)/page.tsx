@@ -1,33 +1,33 @@
-import { podcastData } from '@/dummy-data/sample-data';
-import Image from 'next/image';
+'use client';
+
+import { PodcastCard } from '@/components/podcast-card';
+import { api } from '@/convex/_generated/api';
+import { useQuery } from 'convex/react';
 
 export default function HomePage() {
+  const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
+
   return (
-    <section className="px-16 pt-10">
-      <h1 className="mb-5 text-xl font-semibold capitalize">
-        trending podcasts
-      </h1>
+    <main>
+      <section>
+        <h1 className="mb-5 text-xl font-semibold capitalize">
+          trending podcasts
+        </h1>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        {podcastData.map(({ description, id, imgURL, title }) => (
-          <article key={id} className="">
-            <div className="overflow-hidden rounded">
-              <Image
-                src={imgURL}
-                width={174}
-                height={174}
-                alt={title}
-                className="aspect-square h-fit w-full rounded-xl 2xl:size-[200px]"
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {trendingPodcasts?.map(
+            ({ _id, description, imageUrl, title }) => (
+              <PodcastCard
+                key={_id}
+                _id={_id}
+                description={description}
+                imageUrl={imageUrl as string}
+                title={title}
               />
-            </div>
-
-            <h1 className="mt-3 truncate text-lg font-semibold">
-              {title}
-            </h1>
-            <p className="mt-1 truncate text-sm">{description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+            ),
+          )}
+        </div>
+      </section>
+    </main>
   );
 }

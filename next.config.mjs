@@ -10,6 +10,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'ai-studio-assets.limewire.media',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
+
+      // TODO: remove it as its temporary
+      {
+        protocol: 'https',
+        hostname: 'images.wallpapersden.com',
+      },
     ],
   },
 };

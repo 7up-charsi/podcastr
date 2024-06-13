@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ConvexClerkProvider } from '@/providers/convex-clerk-provider';
+import { ConvexClerkProvider } from '@/providers';
 import { Bounce, ToastContainer } from 'react-toastify';
 import '@/styles/globals.css';
+import AudioProvider from '@/providers/audio';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-background text-foreground`}
       >
-        <ConvexClerkProvider>{children}</ConvexClerkProvider>
+        <ConvexClerkProvider>
+          <AudioProvider>{children}</AudioProvider>
+        </ConvexClerkProvider>
 
         <ToastContainer
           position="bottom-right"

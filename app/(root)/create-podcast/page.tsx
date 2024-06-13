@@ -60,8 +60,9 @@ const CreatePodcastPage = () => {
       description: '',
       voiceType: '',
       voicePrompt: '',
-      audioUrl: 'https://music.youtube.com/watch?v=ou0phHbzz-0',
+      audioUrl: '',
       imagePrompt: '',
+      // TODO: remove this url when api limit resets
       imageUrl:
         'https://images.wallpapersden.com/image/ws-one-piece-hd-luffy-cool-art_83100.jpg',
       audioDuration: 0,
@@ -92,7 +93,7 @@ const CreatePodcastPage = () => {
   };
 
   return (
-    <main className="px-5 py-10">
+    <main>
       <h1 className="text-xl font-semibold capitalize">
         create podcast
       </h1>
