@@ -13,7 +13,7 @@ export interface PodcastCardProps {
 const displayName = 'PodcastCard';
 
 export const PodcastCard = (props: PodcastCardProps) => {
-  const { _id, imageUrl, title } = props;
+  const { _id, imageUrl, title, description } = props;
 
   const router = useRouter();
 
@@ -34,7 +34,10 @@ export const PodcastCard = (props: PodcastCardProps) => {
           />
         </div>
 
-        <h1 className="mt-2 truncate leading-none">{title}</h1>
+        <h3 className="mt-2 truncate text-sm font-medium">{title}</h3>
+        <div className="mt-px truncate text-xs text-foreground/80">
+          {description}
+        </div>
       </article>
     </PointerEvents>
   );

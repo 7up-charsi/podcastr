@@ -16,6 +16,8 @@
     "@typeweave/react": "^3.0.3",
     "@typeweave/react-utils": "^1.1.3",
     "convex": "^1.12.1",
+    "embla-carousel-autoplay": "^8.1.5",
+    "embla-carousel-react": "^8.1.5",
     "lucide-react": "^0.390.0",
     "next": "14.2.3",
     "node-fetch": "^3.3.2",
