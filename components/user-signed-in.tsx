@@ -19,44 +19,49 @@ export const UserSignedIn = () => {
   if (!isSignedIn || !isLoaded) return;
 
   return (
-    <div className="flex h-14 items-center bg-muted-3 px-3">
-      <AvatarRoot className="shrink-0">
-        <AvatarImage src={user.imageUrl} />
-        <AvatarFallback>
-          {`${user.firstName?.[0] ?? ''} ${user.lastName?.[0] ?? ''}`}
-        </AvatarFallback>
-      </AvatarRoot>
+    <div className="space-y-2 overflow-hidden rounded">
+      <div className="flex items-center gap-2 bg-muted-3 px-2 py-2">
+        <AvatarRoot className="shrink-0">
+          <AvatarImage src={user.imageUrl} />
+          <AvatarFallback>
+            {`${user.firstName?.[0] ?? ''} ${user.lastName?.[0] ?? ''}`}
+          </AvatarFallback>
+        </AvatarRoot>
 
-      <span
-        aria-label="logged in username"
-        className="mx-2 truncate capitalize"
-      >
-        {user.fullName}
-      </span>
+        <span
+          aria-label="logged in username"
+          className="truncate capitalize"
+        >
+          {user.fullName}
+        </span>
+      </div>
 
-      <Link
-        href={`/profile/${user.id}`}
-        className="flex grow items-center space-x-3 overflow-auto"
-      >
+      <div className="flex items-center justify-between">
         <Button
           aria-label="profile settings"
-          isIconOnly
-          className="ml-auto"
+          asChild
+          className="grow-0 gap-0"
+          startContent={<SettingsIcon />}
         >
-          <SettingsIcon />
+          <Link
+            href={`/profile/${user.id}`}
+            className="flex grow items-center space-x-3 overflow-auto"
+          >
+            profile
+          </Link>
         </Button>
-      </Link>
 
-      <SignOutButton redirectUrl="/">
-        <Button
-          aria-label="sign out"
-          isIconOnly
-          variant="text"
-          className="shrink-0"
-        >
-          <LogOutIcon />
-        </Button>
-      </SignOutButton>
+        <SignOutButton redirectUrl="/">
+          <Button
+            aria-label="sign out"
+            isIconOnly
+            variant="text"
+            className="shrink-0"
+          >
+            <LogOutIcon />
+          </Button>
+        </SignOutButton>
+      </div>
     </div>
   );
 };

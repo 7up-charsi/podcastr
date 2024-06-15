@@ -1,6 +1,12 @@
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
-import { useAudio } from '@/providers';
+import { useMutation } from 'convex/react';
+import { TrashIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { toast } from 'react-toastify';
+import { CustomLoader } from './custom-loader';
+import { usePlayerCtx } from '@/hooks';
 import {
   Button,
   DialogClose,
@@ -10,12 +16,6 @@ import {
   DialogRoot,
   DialogTrigger,
 } from '@typeweave/react';
-import { useMutation } from 'convex/react';
-import { TrashIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import React, { useDebugValue } from 'react';
-import { toast } from 'react-toastify';
-import { CustomLoader } from './custom-loader';
 
 interface DeletePodcastButtonProps {
   id: Id<'podcasts'>;
@@ -29,7 +29,7 @@ export const DeletePodcastButton = (
   const { id } = props;
 
   const router = useRouter();
-  const { setAudio } = useAudio();
+  const { setAudio } = usePlayerCtx();
   const [isDeleting, setIsDeleting] = React.useState(false);
 
   const deletePodcast = useMutation(api.podcasts.deletePodcast);

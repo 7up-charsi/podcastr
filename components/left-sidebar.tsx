@@ -4,10 +4,7 @@ import { sidebarLinks } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
-import { Button } from '@typeweave/react';
 import { NavbarLink } from './navbar-link';
-import { UserSignedIn } from './user-signed-in';
 
 const displayName = 'LeftSidebar';
 
@@ -42,23 +39,6 @@ export const LeftSidebar = () => {
             <NavbarLink key={ele.label} {...ele} />
           ))}
         </nav>
-
-        <div className="mt-auto p-3">
-          <SignedOut>
-            <SignInButton>
-              <Button
-                variant="solid"
-                color="primary"
-                className="w-full"
-              >
-                sign in
-              </Button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserSignedIn />
-          </SignedIn>
-        </div>
       </aside>
     </div>
   );

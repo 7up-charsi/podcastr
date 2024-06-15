@@ -1,5 +1,5 @@
 import { LeftSidebar } from '@/components/left-sidebar';
-import { PodcastPlayer } from '@/components/podcast-player';
+import { Player } from '@/components/player';
 import { RightSidebar } from '@/components/right-sidebar';
 
 interface RootLayoutProps {
@@ -17,7 +17,7 @@ const RootLayout = (props: RootLayoutProps) => {
 
       <RightSidebar />
 
-      <PodcastPlayer />
+      <Player />
     </div>
   );
 };

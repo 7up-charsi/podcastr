@@ -1,18 +1,19 @@
 'use client';
 
-import { AudioProps, useAudio } from '@/providers';
+import { usePlayerCtx } from '@/hooks';
+import { PlayerAudio } from '@/providers';
 import { Button } from '@typeweave/react';
 import { PlayCircleIcon } from 'lucide-react';
 import React from 'react';
 
-interface PlayPodcastButtonProps extends AudioProps {}
+interface PlayPodcastButtonProps extends PlayerAudio {}
 
 const displayName = 'PlayPodcastButton';
 
 export const PlayPodcastButton = (props: PlayPodcastButtonProps) => {
   const { audioUrl, author, imageUrl, _id, title } = props;
 
-  const { setAudio } = useAudio();
+  const { setAudio } = usePlayerCtx();
 
   return (
     <Button
