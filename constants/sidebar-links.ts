@@ -1,5 +1,3 @@
-import { CompassIcon, HomeIcon, MicIcon } from 'lucide-react';
-
 export const sidebarLinks = [
   { route: '/', label: 'home', icon: '/icons/home.svg' },
   {
@@ -11,5 +9,10 @@ export const sidebarLinks = [
     route: '/create-podcast',
     label: 'create podcast',
     icon: '/icons/mic.svg',
+  },
+  {
+    route: '/profile',
+    label: 'profile',
+    icon: '/icons/settings.svg',
   },
 ];

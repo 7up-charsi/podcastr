@@ -9,25 +9,23 @@ export default function HomePage() {
 
   return (
     <main>
-      <section>
-        <h1 className="mb-5 text-xl font-semibold capitalize">
-          trending podcasts
-        </h1>
+      <h1 className="mb-5 text-xl font-semibold capitalize">
+        trending podcasts
+      </h1>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-          {trendingPodcasts?.map(
-            ({ _id, description, imageUrl, title }) => (
-              <PodcastCard
-                key={_id}
-                _id={_id}
-                description={description}
-                imageUrl={imageUrl as string}
-                title={title}
-              />
-            ),
-          )}
-        </div>
-      </section>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+        {trendingPodcasts?.map(
+          ({ _id, description, imageUrl, title }) => (
+            <PodcastCard
+              key={_id}
+              _id={_id}
+              description={description}
+              imageUrl={imageUrl as string}
+              title={title}
+            />
+          ),
+        )}
+      </div>
     </main>
   );
 }

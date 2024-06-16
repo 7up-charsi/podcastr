@@ -37,13 +37,8 @@ export const Player = () => {
           <div className="truncate text-xs">{audio.author}</div>
         </div>
       </div>
-      <div className="h-full grow bg-muted-9">
-        <audio
-          ref={audioRef}
-          src={audio.audioUrl}
-          className="hidden"
-        ></audio>
-      </div>
+
+      <div className="h-full grow bg-muted-9"></div>
 
       <Button
         aria-label="toggle mute"

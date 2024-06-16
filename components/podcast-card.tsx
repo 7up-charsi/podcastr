@@ -24,13 +24,12 @@ export const PodcastCard = (props: PodcastCardProps) => {
       }
     >
       <article className="cursor-pointer">
-        <div className="overflow-hidden rounded">
+        <div className="relative aspect-video w-full overflow-hidden rounded">
           <Image
             src={imageUrl as string}
-            width={174}
-            height={174}
             alt={title}
-            className="aspect-square w-full rounded-xl 2xl:size-[200px]"
+            fill
+            className="object-cover"
           />
         </div>
 

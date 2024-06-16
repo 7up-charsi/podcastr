@@ -7,9 +7,6 @@ import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
 import autoPlayCarousel from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
-import { Button } from '@typeweave/react';
-import { UserSignedIn } from './user-signed-in';
 
 export interface RightSidebarProps {}
 
@@ -23,26 +20,8 @@ export const RightSidebar = (props: RightSidebarProps) => {
   const [emblaRef] = useEmblaCarousel({}, [autoPlayCarousel()]);
 
   return (
-    <div role="presentation" className="hidden w-[270px] lg:block">
+    <div role="presentation" className="hidden w-[270px] xl:block">
       <aside className="fixed right-0 top-0 h-full w-[270px] bg-muted-2 px-5 py-5">
-        <div>
-          <SignedOut>
-            <SignInButton>
-              <Button
-                variant="solid"
-                color="primary"
-                className="w-full"
-              >
-                sign in
-              </Button>
-            </SignInButton>
-          </SignedOut>
-
-          <SignedIn>
-            <UserSignedIn />
-          </SignedIn>
-        </div>
-
         <div className="mt-5 flex justify-between gap-2">
           <h2 className="text-sm font-semibold capitalize">
             fans also like
