@@ -10,9 +10,4 @@ export const sidebarLinks = [
     label: 'create podcast',
     icon: '/icons/mic.svg',
   },
-  {
-    route: '/profile',
-    label: 'profile',
-    icon: '/icons/settings.svg',
-  },
 ];

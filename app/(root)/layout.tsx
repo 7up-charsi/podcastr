@@ -1,10 +1,9 @@
 import { Branding } from '@/components/branding';
-import { NavbarLink } from '@/components/navbar-link';
+import { NavLink } from '@/components/nav-link';
 import { Player } from '@/components/player';
 import { RightSidebar } from '@/components/right-sidebar';
 import { User } from '@/components/user';
 import { sidebarLinks } from '@/constants';
-import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
 import {
   Button,
   DrawerContent,
@@ -14,8 +13,6 @@ import {
   DrawerTrigger,
 } from '@typeweave/react';
 import { MenuIcon } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
 
 interface RootLayoutProps {
   children?: React.ReactNode;
@@ -48,7 +45,7 @@ const RootLayout = (props: RootLayoutProps) => {
                 className="mt-2 space-y-1"
               >
                 {sidebarLinks.map((ele) => (
-                  <NavbarLink key={ele.label} {...ele} />
+                  <NavLink key={ele.label} {...ele} />
                 ))}
               </nav>
 
@@ -71,7 +68,7 @@ const RootLayout = (props: RootLayoutProps) => {
             className="mt-2 space-y-1"
           >
             {sidebarLinks.map((ele) => (
-              <NavbarLink key={ele.label} {...ele} />
+              <NavLink key={ele.label} {...ele} />
             ))}
           </nav>
 

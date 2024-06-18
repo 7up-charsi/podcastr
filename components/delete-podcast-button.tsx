@@ -58,12 +58,11 @@ export const DeletePodcastButton = (
     >
       <DialogTrigger>
         <Button
-          isIconOnly
-          aria-label="delete podcast"
           color="danger"
           disabled={isDeleting}
+          startContent={isDeleting ? <CustomLoader /> : <TrashIcon />}
         >
-          {isDeleting ? <CustomLoader /> : <TrashIcon />}
+          delete
         </Button>
       </DialogTrigger>
 

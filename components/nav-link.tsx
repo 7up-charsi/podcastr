@@ -5,15 +5,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-interface NavbarLinkProps {
+interface NavLinkProps {
   route: string;
   label: string;
   icon: string;
 }
 
-const displayName = 'NavbarLink';
+const displayName = 'NavLink';
 
-export const NavbarLink = (props: NavbarLinkProps) => {
+export const NavLink = (props: NavLinkProps) => {
   const { icon, label, route } = props;
 
   const pathname = usePathname();
@@ -33,4 +33,4 @@ export const NavbarLink = (props: NavbarLinkProps) => {
   );
 };
 
-NavbarLink.displayName = displayName;
+NavLink.displayName = displayName;

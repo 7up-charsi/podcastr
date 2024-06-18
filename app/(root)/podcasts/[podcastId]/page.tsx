@@ -60,17 +60,18 @@ const PodcastDetailsPage = ({
         </div>
       </div>
 
-      <article className="my-10 flex items-center gap-5">
-        <Image
-          src={podcast.imageUrl as string}
-          width={200}
-          height={200}
-          alt="Podcast image"
-          className="aspect-square rounded-lg"
-          aria-labelledby="podcast-title"
-        />
+      <article className="my-10 md:flex md:gap-3">
+        <div className="relative aspect-video w-full overflow-hidden rounded md:max-w-sm">
+          <Image
+            src={podcast.imageUrl as string}
+            alt="Podcast image"
+            fill
+            aria-labelledby="podcast-title"
+            className="object-cover"
+          />
+        </div>
 
-        <div className="flex flex-col items-start gap-5">
+        <div className="mt-2 space-y-3">
           <h2
             id="podcast-title"
             className="truncate text-lg font-semibold first-letter:uppercase"
@@ -78,20 +79,7 @@ const PodcastDetailsPage = ({
             {podcast.title}
           </h2>
 
-          <div className="space-x-3">
-            <AvatarRoot>
-              <AvatarImage src={podcast.authorImageUrl} />
-              <AvatarFallback>
-                {podcast.author.slice(0, 1)}
-              </AvatarFallback>
-            </AvatarRoot>
-
-            <span className="first-letter:uppercase">
-              {podcast.author}
-            </span>
-          </div>
-
-          <div className="mt-7 flex w-full items-center justify-between gap-5">
+          <div className="flex w-full items-center gap-3">
             <PlayPodcastButton
               _id={podcast._id}
               audioUrl={podcast.audioUrl as string}
@@ -99,10 +87,21 @@ const PodcastDetailsPage = ({
               imageUrl={podcast.imageUrl as string}
               title={podcast.title}
             />
-
             {!isOwner ? null : (
               <DeletePodcastButton id={podcast._id} />
             )}
+          </div>
+
+          <div className="">
+            <AvatarRoot>
+              <AvatarImage src={podcast.authorImageUrl} />
+              <AvatarFallback>
+                {podcast.author.slice(0, 1)}
+              </AvatarFallback>
+            </AvatarRoot>
+            <span className="ml-3 first-letter:uppercase">
+              {podcast.author}
+            </span>
           </div>
         </div>
       </article>
