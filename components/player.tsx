@@ -1,11 +1,13 @@
 'use client';
 
 import { usePlayerCtx } from '@/hooks';
-import { Button } from '@typeweave/react';
-import { Volume2Icon, VolumeXIcon } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { PlayerVolumn } from './player-volumn';
+import { PlayerControls } from './player-controls';
+import { PlayerTime } from './player-time';
+import { PlayerProgress } from './player-progress';
 
 const displayName = 'Player';
 
@@ -14,12 +16,12 @@ export const Player = () => {
 
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  const [isMuted, setIsMuted] = React.useState(false);
-
   if (!audio) return;
 
   const content = (
-    <div className="fixed bottom-0 left-0 isolate z-50 flex h-20 w-full items-center gap-3 bg-muted-4/70 px-10 backdrop-blur-sm">
+    <div className="fixed bottom-0 left-0 isolate z-50 flex h-20 w-full select-none items-center gap-3 bg-muted-4/70 px-10 backdrop-blur-sm">
+      <PlayerProgress audioRef={audioRef} />
+
       <div className="flex items-center gap-2">
         <div className="relative aspect-square w-12 overflow-hidden rounded">
           <Image
@@ -38,20 +40,19 @@ export const Player = () => {
         </div>
       </div>
 
-      <div className="h-full grow bg-muted-9"></div>
+      <div className="flex h-full grow items-center justify-center">
+        <audio
+          ref={audioRef}
+          src={audio.audioUrl}
+          autoPlay
+          className="hidden"
+        ></audio>
 
-      <Button
-        aria-label="toggle mute"
-        isIconOnly
-        onPress={() => {
-          if (!audioRef.current) return;
+        <PlayerControls audioRef={audioRef} />
+      </div>
 
-          setIsMuted((prev) => !prev);
-          audioRef.current.muted = !audioRef.current?.muted;
-        }}
-      >
-        {isMuted ? <VolumeXIcon /> : <Volume2Icon />}
-      </Button>
+      <PlayerTime audioRef={audioRef} />
+      <PlayerVolumn audioRef={audioRef} />
     </div>
   );
 
