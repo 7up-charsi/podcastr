@@ -14,7 +14,7 @@ export const PlayerProgress = (props: PlayerProgressProps) => {
   const [isEnded, setIsEnded] = React.useState(false);
 
   React.useEffect(() => {
-    const handler = () => {
+    const pauseHandler = () => {
       if (!audioRef.current) return;
 
       if (
@@ -27,12 +27,18 @@ export const PlayerProgress = (props: PlayerProgressProps) => {
       setIsEnded(false);
     };
 
+    const playHandler = () => {
+      setIsEnded(false);
+    };
+
     const element = audioRef.current;
 
-    element?.addEventListener('pause', handler);
+    element?.addEventListener('pause', pauseHandler);
+    element?.addEventListener('play', playHandler);
 
     return () => {
-      element?.removeEventListener('pause', handler);
+      element?.removeEventListener('pause', pauseHandler);
+      element?.removeEventListener('play', playHandler);
     };
   }, [audioRef]);
 
@@ -57,7 +63,7 @@ export const PlayerProgress = (props: PlayerProgressProps) => {
       <div
         ref={progressBarRef}
         data-ended={isEnded}
-        className="h-full w-full rounded-r-full bg-primary-9 data-[ended=true]:rounded-r-none"
+        className="h-full w-0 rounded-r-full bg-primary-9 data-[ended=true]:rounded-r-none"
       />
     </div>
   );
